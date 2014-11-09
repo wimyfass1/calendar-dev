@@ -10,10 +10,4 @@ Thumbs.db
 .DS_Store
 .springBeans
 .externalToolBuilders
-.project
 .idea/
-jms.iml
-/src/main/resources/dev/config.properties
-src/main/resources/dev/config.properties
-/src/main/java/rebel.xml
-src/main/java/rebel.xml
