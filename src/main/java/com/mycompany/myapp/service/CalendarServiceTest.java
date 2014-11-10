@@ -1,6 +1,5 @@
 package com.mycompany.myapp.service;
 
-import java.util.Calendar;
 import java.util.Random;
 
 import org.junit.Test;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 
@@ -20,7 +20,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
@@ -30,7 +29,7 @@ import static org.junit.Assert.fail;
 public class CalendarServiceTest {
 	@Autowired
 	private CalendarService calendarService;	
-
+	
 	@Autowired
 	private PlatformTransactionManager transactionManager;
 	
@@ -120,38 +119,5 @@ public class CalendarServiceTest {
 		else {
 			assertThat(eventFromDB.getEventLevel(), is(event.getEventLevel()));
 		}
-	}
-	
-	@Test
-	public void upgradeAllOrNothing() throws Exception{
-		TestCalendarService testCalendarService = new TestCalendarService(events[3].getId());
-		testCalendarService.setTransactionManager(this.transactionManager);
-		testCalendarService.setEventDao(this.eventDao);
-		
-		try {
-			testCalendarService.upgradeEventLevels();
-			fail("TestUserServiceException expected");
-		}
-		catch(TestCalenadarServiceException e) {
-			assertThat(e, isA(TestCalenadarServiceException.class));
-		}
-		
-		checkEventLevelUpgraded(events[2], false);
-	}
-	
-	static class TestCalendarService extends DefaultCalendarService {
-		private int faultId;
-		
-		public TestCalendarService(int faultId) {
-			this.faultId = faultId;
-		}
-		
-		public void upgradeEventLevel(Event event) {
-			if ( event.getId().equals(this.faultId) ) throw new TestCalenadarServiceException();
-			super.upgradeEventLevel(event);
-		}
-	}
-	
-	static class TestCalenadarServiceException extends RuntimeException {
 	}
 }

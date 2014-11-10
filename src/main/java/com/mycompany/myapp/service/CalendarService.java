@@ -2,6 +2,8 @@ package com.mycompany.myapp.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.mycompany.myapp.domain.CalendarUser;
 import com.mycompany.myapp.domain.Event;
 import com.mycompany.myapp.domain.EventAttendee;

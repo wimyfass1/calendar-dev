@@ -1,6 +1,35 @@
 ## 프로젝트: calendar-dev
 본 프로젝트는 한국기술교육대학교 컴퓨터공학부 4학년 "웹서비스컴퓨팅및실습" 수업에서 Assignment로 활용하는 프로젝트입니다. 
 
+### Assignment 4
+#### 제목: Calendar-dev를 Web 기반 어플리케이션으로 전환하기
+#### 기한: 2014년 11월 21일 (금요일) 23시 59분 
+- 기존의 calendar-dev를 완전히 삭제하고 다시 import 하기
+  - STS에서 calendar-dev 프로젝트 삭제 (disk에서도 삭제 - Delete project contents on disk 체크)
+  - Source Tree에서 calendar-dev를 삭제하고 github URL 재 확인 후 다시 clone 하여 로컬에 가져오기
+  - STS에서 로컬에 있는 프로젝트를 import 하여 프로젝트를 새로 만들기
+- 요구 사항 1 - github에 새로운 Web 기반 프로젝트를 만들고 calendar-dev 코드를 모두 심기
+  - 1) 가장 먼저 할 일: github에 새로운 Repository 생성
+  - 2) Web 기반 프로젝트 생성
+    - 수업시간에 배운 그대로 따라서 생성
+      - 프로젝트 이름: calendar
+      - 패키지 이름: com.mycompany.calendar
+    - 참고 사이트 - http://www.codejava.net/frameworks/spring/spring-mvc-beginner-tutorial-with-spring-tool-suite-ide
+  - 3) 로컬 폴더에 있는 내용을 Source Tree에 추가하고 Commit 이후 github에 Push
+    - 로컬 폴더를 Source Tree에 추가한 후 설정에 들어가 1)에서 생성한 github URL을 등록해 줄 필요 있음  
+  - 4) calendar-dev에 있는 다음 사항들을 차례대로 넣고 테스트하기 (각종 xml 구성에 신경쓰면서 작업)  
+    - domain
+    - dao
+      - DaoJUnitTest.java의 JUnit 테스트를 수행하여 모든 테스트 통과해야 함
+    - service
+      - CalendarServiceTest.java의 JUnit 테스트를 수행하여 모든 테스트 통과해야 함
+- 요구 사항 2 - CalendarService 제작과 이벤트 레벨 관리 및 트랜잭션 테스트 하기
+  - [코딩 요구 사항 2-1] DefaultCalendarService.java에 있는 //TODO Assignment 3 구현 (총 17 개)
+  - [주의 2-1] 이벤트 레벨 관리는 교재에서 학습한 것과 로직이 거의 동일함
+    - 요구 사항: 각 이벤트들은 처음에 NORMAL 레벨이지만 주기적으로 numLike가 10이상인지에 대한 조건을 확인하여 조건이 맞다면 HOT 레벨로 업그레이드 한다. 
+  - [주의 2-2] CalendarServiceTest.java는 완벽하게 코딩이 되어 있음. 이곳에 존재하는 테스트를 완벽하게 성공시켜야 함
+  - [주의 2-3] 5.2.4절에서 학습한 트랜잭션 관련 코드를 upgradeEventLevels() 메소드에 넣어 주어야 함
+  
 ### Assignment 3
 #### 제목: Domain 객체 및 Dao 객체 재정리 및 CalendarService 제작과 이벤트 레벨 관리 및 트랜잭션 테스트 하기
 #### 기한: 2014년 10월 26일 (일요일) 23시 59분 
