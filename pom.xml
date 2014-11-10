@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mycompany.myapp</groupId>
-  <artifactId>calendar-dev-4</artifactId>
+  <artifactId>calendar-dev</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
   <licenses>
@@ -38,7 +38,7 @@
             <deployables>
               <deployable>
                 <properties>
-                  <context>calendar-dev-4</context>
+                  <context>calendar-dev</context>
                 </properties>
               </deployable>
             </deployables>
