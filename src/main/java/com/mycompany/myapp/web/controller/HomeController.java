@@ -80,6 +80,8 @@ public class HomeController {
 			eventAttentees[i].setId(calendarService.createEventAttendee(eventAttentees[i]));
 		}
 		
+		//TODO model에 calendarUsers, events, eventAttentees 배열 객체 추가 
+		
 		return "home";
 	}
 }

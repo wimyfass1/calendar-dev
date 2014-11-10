@@ -24,11 +24,10 @@
     - service
       - CalendarServiceTest.java의 JUnit 테스트를 수행하여 모든 테스트 통과해야 함
 - 요구 사항 2 - CalendarService 제작과 이벤트 레벨 관리 및 트랜잭션 테스트 하기
-  - [코딩 요구 사항 2-1] DefaultCalendarService.java에 있는 //TODO Assignment 3 구현 (총 17 개)
-  - [주의 2-1] 이벤트 레벨 관리는 교재에서 학습한 것과 로직이 거의 동일함
-    - 요구 사항: 각 이벤트들은 처음에 NORMAL 레벨이지만 주기적으로 numLike가 10이상인지에 대한 조건을 확인하여 조건이 맞다면 HOT 레벨로 업그레이드 한다. 
-  - [주의 2-2] CalendarServiceTest.java는 완벽하게 코딩이 되어 있음. 이곳에 존재하는 테스트를 완벽하게 성공시켜야 함
-  - [주의 2-3] 5.2.4절에서 학습한 트랜잭션 관련 코드를 upgradeEventLevels() 메소드에 넣어 주어야 함
+  - HomeController.java의 home() 메소드 마지막 부분에 "model에 calendarUsers, events, eventAttentees 배열 객체 추가" 요구사항 구현
+  - home.jsp 를 적절한 폴더에 생성하여 내용 구현
+  - 브라우저 화면 내에 calendarUsers, events, eventAttentees 배열 내 각 객체들의 모든 속성 내용을 자세히 출력
+  - 화면을 최대한 세련되게 꾸며볼 것
   
 ### Assignment 3
 #### 제목: Domain 객체 및 Dao 객체 재정리 및 CalendarService 제작과 이벤트 레벨 관리 및 트랜잭션 테스트 하기
