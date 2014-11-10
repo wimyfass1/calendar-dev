@@ -1,27 +1,24 @@
-package com.mycompany.myapp.service;
+package com.mycompany.myapp.web.controller;
 
+import java.util.Locale;
 import java.util.Random;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mycompany.myapp.domain.CalendarUser;
 import com.mycompany.myapp.domain.Event;
 import com.mycompany.myapp.domain.EventAttendee;
+import com.mycompany.myapp.service.CalendarService;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="../applicationContext.xml")
-
-public class CalendarServiceTest {
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public class HomeController {
 	@Autowired
 	private CalendarService calendarService;	
 	
@@ -33,9 +30,9 @@ public class CalendarServiceTest {
 
 	private static final int numInitialNumUsers = 12;
 	private static final int numInitialNumEvents = 4;
-
-	@Before
-	public void setUp() {
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
 		calendarUsers = new CalendarUser[numInitialNumUsers];
 		events = new Event[numInitialNumEvents];
 		eventAttentees = new EventAttendee[numInitialNumEvents];
@@ -82,31 +79,7 @@ public class CalendarServiceTest {
 			eventAttentees[i].setAttendee(calendarUsers[3 * i + 2]);
 			eventAttentees[i].setId(calendarService.createEventAttendee(eventAttentees[i]));
 		}
-	}
-	
-	@Test
-	public void CalendarServiceBeanTest() {
-		assertThat(calendarService, notNullValue() );
-	}
-	
-	
-	@Test
-	public void upgradeEventLevels() throws Exception{
-		this.calendarService.upgradeEventLevels();
 		
-		checkEventLevelUpgraded(events[0], false);
-		checkEventLevelUpgraded(events[1], false);
-		checkEventLevelUpgraded(events[2], true);
-		checkEventLevelUpgraded(events[3], true);
-	}
-	
-	private void checkEventLevelUpgraded(Event event, boolean upgraded) {
-		Event eventFromDB = calendarService.getEvent(event.getId());
-		if (upgraded) {
-			assertThat(eventFromDB.getEventLevel(), is(event.getEventLevel().nextLevel()));
-		}
-		else {
-			assertThat(eventFromDB.getEventLevel(), is(event.getEventLevel()));
-		}
+		return "home";
 	}
 }
