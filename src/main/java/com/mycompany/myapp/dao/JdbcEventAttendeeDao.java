@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.myapp.domain.EventAttendee;
 
-@Repository
+@Repository("eventAttendeeDao")
 public class JdbcEventAttendeeDao implements EventAttendeeDao {
 	private JdbcTemplate jdbcTemplate;
 

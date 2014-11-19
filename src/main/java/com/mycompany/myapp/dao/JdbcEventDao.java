@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
 import com.mycompany.myapp.domain.Event;
 import com.mycompany.myapp.domain.EventLevel;
 
-@Repository
+@Repository("eventDao")
 public class JdbcEventDao implements EventDao {
 	private JdbcTemplate jdbcTemplate;
 

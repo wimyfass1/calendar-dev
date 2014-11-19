@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.myapp.domain.CalendarUser;
 
-@Repository
+@Repository("userDao")
 public class JdbcCalendarUserDao implements CalendarUserDao {
 	private JdbcTemplate jdbcTemplate;
 
