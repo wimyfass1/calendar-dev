@@ -31,7 +31,7 @@ CREATE TABLE `calendar_users` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2305 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `calendar_users` (
 
 LOCK TABLES `calendar_users` WRITE;
 /*!40000 ALTER TABLE `calendar_users` DISABLE KEYS */;
-INSERT INTO `calendar_users` VALUES (2293,'user0@example.com','user0','User0'),(2294,'user1@example.com','user1','User1'),(2295,'user2@example.com','user2','User2'),(2296,'user3@example.com','user3','User3'),(2297,'user4@example.com','user4','User4'),(2298,'user5@example.com','user5','User5'),(2299,'user6@example.com','user6','User6'),(2300,'user7@example.com','user7','User7'),(2301,'user8@example.com','user8','User8'),(2302,'user9@example.com','user9','User9'),(2303,'user10@example.com','user10','User10'),(2304,'user11@example.com','user11','User11');
+INSERT INTO `calendar_users` VALUES (0,'admin@example.com','admin','Admin'),(1,'user1@example.com','user1','User1'),(2,'user2@example.com','user2','User2'),(3,'user3@example.com','user3','User3'),(4,'user4@example.com','user4','User4'),(5,'user5@example.com','user5','User5'),(6,'user6@example.com','user6','User6'),(7,'user7@example.com','user7','User7'),(8,'user8@example.com','user8','User8'),(9,'user9@example.com','user9','User9'),(10,'user10@example.com','user10','User10'),(11,'user11@example.com','user11','User11');
 /*!40000 ALTER TABLE `calendar_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `events` (
   PRIMARY KEY (`id`),
   KEY `fk_events_owner` (`owner`),
   CONSTRAINT `constraints_events_owner` FOREIGN KEY (`owner`) REFERENCES `calendar_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=769 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (765,'2014-11-10 16:05:01','Event Summary - 0','Event Description - 0',2293,0,1),(766,'2014-11-10 16:05:01','Event Summary - 1','Event Description - 1',2301,9,1),(767,'2014-11-10 16:05:01','Event Summary - 2','Event Description - 2',2299,10,2),(768,'2014-11-10 16:05:01','Event Summary - 3','Event Description - 3',2293,10,2);
+INSERT INTO `events` VALUES (0,'2014-11-27 01:30:54','Event Summary - 0','Event Description - 0',0,0,1),(1,'2014-11-27 01:30:54','Event Summary - 1','Event Description - 1',8,9,1),(2,'2014-11-27 01:30:54','Event Summary - 2','Event Description - 2',6,10,2),(3,'2014-11-27 01:30:54','Event Summary - 3','Event Description - 3',0,10,2);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `events_attendees` (
   KEY `fk_events_attendee` (`attendee`),
   CONSTRAINT `constraints_events_attendee` FOREIGN KEY (`attendee`) REFERENCES `calendar_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `constraints_events_id` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=889 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,8 +100,36 @@ CREATE TABLE `events_attendees` (
 
 LOCK TABLES `events_attendees` WRITE;
 /*!40000 ALTER TABLE `events_attendees` DISABLE KEYS */;
-INSERT INTO `events_attendees` VALUES (885,765,2295),(886,766,2298),(887,767,2301),(888,768,2304);
+INSERT INTO `events_attendees` VALUES (0,0,2),(1,1,5),(2,2,8),(3,3,11),(4,0,10);
 /*!40000 ALTER TABLE `events_attendees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_username_role` (`role`,`email`),
+  KEY `fk_users_email` (`email`),
+  CONSTRAINT `constraints_users_email` FOREIGN KEY (`email`) REFERENCES `calendar_users` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+LOCK TABLES `user_roles` WRITE;
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+INSERT INTO `user_roles` VALUES (0,'admin@example.com','ROLE_ADMIN'),(10,'user10@example.com','ROLE_USER'),(11,'user11@example.com','ROLE_USER'),(1,'user1@example.com','ROLE_USER'),(2,'user2@example.com','ROLE_USER'),(3,'user3@example.com','ROLE_USER'),(4,'user4@example.com','ROLE_USER'),(5,'user5@example.com','ROLE_USER'),(6,'user6@example.com','ROLE_USER'),(7,'user7@example.com','ROLE_USER'),(8,'user8@example.com','ROLE_USER'),(9,'user9@example.com','ROLE_USER');
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -113,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-17 17:55:23
+-- Dump completed on 2014-11-27 10:37:50

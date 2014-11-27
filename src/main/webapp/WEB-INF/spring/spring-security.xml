@@ -18,7 +18,7 @@
 		    login-page="/login" 
 		    default-target-url="/" 
 			authentication-failure-url="/login?error" 
-			username-parameter="id"
+			username-parameter="email"
 			password-parameter="password" />
 			
 		<logout logout-success-url="/login?logout"  />
@@ -29,7 +29,7 @@
 	  <authentication-provider>
 		<jdbc-user-service data-source-ref="dataSource"
 		  users-by-username-query=
-		    "select id, password, true from users where id=?"
+		    "select id, password, true from calendar_users where email=?"
 		  authorities-by-username-query=
 		    "select u.id, ur.role from users u, user_roles ur where u.id = ? and ur.user_id = u.id " />
 	  </authentication-provider>
