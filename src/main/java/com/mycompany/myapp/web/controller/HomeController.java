@@ -5,9 +5,9 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.myapp.domain.CalendarUser;
 import com.mycompany.myapp.domain.Event;
@@ -32,7 +32,7 @@ public class HomeController {
 	private static final int numInitialNumEvents = 4;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public ModelAndView index(Locale locale, ModelAndView mav) {
 		calendarUsers = new CalendarUser[numInitialNumUsers];
 		events = new Event[numInitialNumEvents];
 		eventAttentees = new EventAttendee[numInitialNumEvents];
@@ -80,8 +80,8 @@ public class HomeController {
 			eventAttentees[i].setId(calendarService.createEventAttendee(eventAttentees[i]));
 		}
 		
-		//TODO model에 calendarUsers, events, eventAttentees 배열 객체 추가 
-		
-		return "home";
+		mav.addObject("message", "myCalendar 서비스에 오신 것을 환영합니다.");
+		mav.setViewName("index");
+		return mav;
 	}
 }

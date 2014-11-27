@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="../applicationContext.xml")
+@ContextConfiguration(locations="/root-context.xml")
 
 public class DaoJUnitTest {
 	@Autowired

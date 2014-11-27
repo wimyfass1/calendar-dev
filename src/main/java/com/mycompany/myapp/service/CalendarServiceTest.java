@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="../applicationContext.xml")
+@ContextConfiguration(locations="/root-context.xml")
 
 public class CalendarServiceTest {
 	@Autowired
