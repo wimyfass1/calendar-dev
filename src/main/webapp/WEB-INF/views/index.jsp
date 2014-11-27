@@ -7,7 +7,7 @@
 	<title>myCalendar: <c:out value="${pageTitle}"/> </title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <c:url var="resourceUrl" value="/resources"/>
-    <link href="${resourceUrl}/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet"/>
+    <link href="${resourceUrl}/bootstrap-3.3.1/css/bootstrap.css" rel="stylesheet"/>
     <link href="${resourceUrl}/css/custom.css" rel="stylesheet"/>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
