@@ -11,3 +11,4 @@ Thumbs.db
 .springBeans
 .externalToolBuilders
 .idea/
+*.MF
