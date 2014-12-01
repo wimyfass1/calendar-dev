@@ -15,22 +15,22 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
         	  <c:url var="welcomeUrl" value="/" />	
-            <li><a id="navWelcomeLink" href="${welcomeUrl}">홈</a></li>
+            <li><a id="navWelcomeLink" href="${welcomeUrl}"><span class="glyphicon glyphicon-home"></span> 홈</a></li>
 
             <c:url var="eventsUrl" value="/events/" />
-            <li><a id="navEventsLink" href="${eventsUrl}">모든 이벤트 보기</a></li>
+            <li><a id="navEventsLink" href="${eventsUrl}"><span class="glyphicon glyphicon-th-list"></span> 모든 이벤트 보기</a></li>
 
             <c:url var="myEventsUrl" value="/events/my" />
-            <li><a id="navMyEventsLink" href="${myEventsUrl}">나의 이벤트</a></li>
+            <li><a id="navMyEventsLink" href="${myEventsUrl}"><span class="glyphicon glyphicon-ok-sign"></span> 나의 이벤트</a></li>
 
             <c:url var="createEventUrl" value="/events/form" />
-            <li><a id="navCreateEventLink" href="${createEventUrl}">이벤트 생성</a></li>
+            <li><a id="navCreateEventLink" href="${createEventUrl}"><span class="glyphicon glyphicon-new-window"></span> 이벤트 생성</a></li>
             
             <c:url var="signupUrl" value="/users/signup" />
-            <li><a id="signupLink" href="${signupUrl}">회원 가입</a></li>
+            <li><a id="signupLink" href="${signupUrl}"><span class="glyphicon glyphicon-globe"></span> 회원 가입</a></li>
             
             <c:url var="signinUrl" value="/users/signin" />
-            <li><a id="signinLink" href="${signinUrl}">로그인</a></li>
+            <li><a id="signinLink" href="${signinUrl}"><span class="glyphicon glyphicon-saved"></span> 로그인</a></li>
         </ul>
     </div>
   </div>

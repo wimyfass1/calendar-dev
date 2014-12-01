@@ -21,13 +21,15 @@
     <c:if test="${message != null}">
         <div class="alert alert-success" id="message"><c:out value="${message}"/></div>
     </c:if>
-
-    <div class="alert alert-success" id="message">도움말: <a href="https://github.com/Eonasdan/bootstrap-datetimepicker/wiki/Installation" target="_blank">https://github.com/Eonasdan/bootstrap-datetimepicker/wiki/Installation</a></div>
-    <div class="alert alert-success" id="message">예제: <a href="http://eonasdan.github.io/bootstrap-datetimepicker/" target="_blank">http://eonasdan.github.io/bootstrap-datetimepicker/</a></div>
-    
+    <div class="container row">
+    <div class="alert alert-success col-md-6" id="message">도움말: <a href="https://github.com/Eonasdan/bootstrap-datetimepicker/wiki/Installation" target="_blank">https://github.com/Eonasdan/bootstrap-datetimepicker/wiki/Installation</a></div>
+    <div class="alert alert-success col-md-6" id="message">예제: <a href="http://eonasdan.github.io/bootstrap-datetimepicker/" target="_blank">http://eonasdan.github.io/bootstrap-datetimepicker/</a></div>
+	</div>
+	
 	<div class="container">
+		
 	    <div class="row">
-	        <div class='col-sm-6'>
+	        <div class='col-md-6'>
 	            <div class="form-group">
 	                <div class='input-group date' id='datetimepicker1'>
 	                    <input type='text' class="form-control" />
