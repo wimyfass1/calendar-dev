@@ -48,9 +48,9 @@
 <script type="text/javascript" src="${resourceUrl}/javascript/moment.js"></script>
 <script type="text/javascript" src="${resourceUrl}/javascript/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
+$(function () {
+    $('#datetimepicker1').datetimepicker();
+});
 </script>
 </body>
 </html>
