@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request"/>
-<html lang="en">
+<html>
 <head>
-	<title>myCalendar: <c:out value="${pageTitle}"/> </title>
+	<title>myCalendar: <c:out value="${pageTitle}" /> </title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <c:url var="resourceUrl" value="/resources"/>
     <link href="${resourceUrl}/bootstrap-3.3.1/css/bootstrap.css" rel="stylesheet"/>
@@ -18,7 +18,7 @@
 <div class="container">
 <jsp:include page="./includes/header.jsp"/>
     <c:if test="${message != null}">
-        <div class="alert alert-success" id="message"><c:out value="${message}"/></div>
+        <div class="alert alert-danger" id="message"><c:out value="${message}"/></div>
     </c:if>
 	<ul>
 	    <li><a id="eventsLink" href="events/">모든 이벤트 보기</a> - 모든 유저들이 등록한 이벤트를 볼 수 있습니다.

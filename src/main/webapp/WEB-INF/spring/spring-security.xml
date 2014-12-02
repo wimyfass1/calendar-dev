@@ -29,9 +29,9 @@
 	  <authentication-provider>
 		<jdbc-user-service data-source-ref="dataSource"
 		  users-by-username-query=
-		    "select id, password, true from calendar_users where email=?"
+		    "select email, password, true from calendar_users where email=?"
 		  authorities-by-username-query=
-		    "select u.id, ur.role from calendar_users u, user_roles ur where u.id = ? and ur.email = u.email " />
+		    "select u.email, ur.role from calendar_users u, user_roles ur where u.email = ? and ur.email = u.email " />
 	  </authentication-provider>
 	</authentication-manager>
 </beans:beans>
