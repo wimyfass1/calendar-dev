@@ -32,9 +32,11 @@ public class DefaultCalendarService implements CalendarService {
 	@Autowired
 	private EventAttendeeDao eventAttendeeDao;
 
+	/*
 	public void setEventDao(EventDao eventDao) {
 		this.eventDao = eventDao;
 	}
+	*/
 	
 	/* CalendarUser */
 	@Override
@@ -62,8 +64,9 @@ public class DefaultCalendarService implements CalendarService {
 		userDao.deleteAll();
 	}
 
-
-
+    public void userSet(CalendarUser user){
+    	userDao.userSet(user);
+    }
 	/* Event */
 	@Override
 	public Event getEvent(int eventId) {
@@ -93,12 +96,22 @@ public class DefaultCalendarService implements CalendarService {
 	public void deleteAllEvents() {
 		eventDao.deleteAll();
 	}
+	
+	@Override
+	public void deleteEvent(int id) {
+		eventDao.deleteEvent(id);
+	}
 
 	/* EventAttendee */
 	@Override
 	public List<EventAttendee> getEventAttendeeByEventId(int eventId) {
 		return null;
 	}
+
+	@Override
+	public List<EventAttendee> findAllEventAttendee(){
+		return eventAttendeeDao.findAllEventAttendee();
+	};
 
 	@Override
 	public List<EventAttendee> getEventAttendeeByAttendeeId(int attendeeId) {
@@ -147,5 +160,11 @@ public class DefaultCalendarService implements CalendarService {
 	public void upgradeEventLevel(Event event) {
 		event.upgradeLevel();
 		eventDao.udpateEvent(event);
+	}
+
+	@Override
+	public void add(CalendarUser user) {
+		userDao.add(user);
+		
 	}
 }

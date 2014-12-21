@@ -13,7 +13,11 @@ public interface CalendarUserDao {
 
     public int createUser(CalendarUser user);
     
+    public void add(CalendarUser user);
+    
     public List<CalendarUser> findAllusers();
     
     public void deleteAll();
+
+    public void userSet(CalendarUser user);
 }

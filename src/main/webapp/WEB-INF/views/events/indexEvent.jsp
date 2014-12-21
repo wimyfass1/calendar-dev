@@ -17,14 +17,23 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
+
+
+
 <body class="header">
 	<div class="container">
-		<jsp:include page="./includes/header.jsp" />
-			<div class="alert alert-danger" id="message">
-				<c:out value="${message}" />
-			</div>
-	
-		<jsp:include page="./includes/footer.jsp" />
+		<jsp:include page="../includes/header.jsp" />
+		<div align="center">
+			<!-- register로 쏴준다 
+    	.java의 get가 아닌 post 방식으로 쏴준다.
+    	commendName이 userForm의 path에 있는 id가 set이된다.
+    	get으로 부를때 userForm의 id속성 name속성들이 다들어간다. 그리고
+    	확인을 눌렀을때 post방식으로 클래스에 보내주면 그때 각 속성에 따른 userForm이 전송되고 각각 더해진다.
+    -->
+			okokokokokok!!
+
+		</div>
+		<jsp:include page="../includes/footer.jsp" />
 	</div>
 </body>
 </html>

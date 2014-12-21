@@ -59,6 +59,33 @@ public class JdbcCalendarUserDao implements CalendarUserDao {
 	}
 
 	@Override
+	public void add(CalendarUser user) {
+		this.jdbcTemplate.update(
+				"insert into calendar_users(email, password, name) " +
+				"values(?,?,?)", 
+					 user.getEmail(), user.getPassword(), user.getName());
+		this.jdbcTemplate.update("insert into user_roles (email,role) values('" +
+				user.getEmail() +
+					 "','ROLE_USER')");
+		
+		System.out.println("Success insert User" + user.getEmail());
+	}
+	
+	public void userSet(CalendarUser user) {
+		this.jdbcTemplate.update(
+				"update calendar_users set password = ?, name = ? where email = ?", 
+					 user.getPassword(),user.getName(),user.getEmail());
+	}
+	
+	/*
+	@Override
+	public CalendarUser userSet(CalendarUser user) {
+		String sql_query = "update calendar_users set password = ?, name = ? where email = ?";
+		return this.jdbcTemplate.queryForObject(sql_query, new Object[] {user.getPassword(),user.getName(),user.getEmail()}, rowMapper);
+		
+	}*/
+
+	@Override
 	public List<CalendarUser> findUsersByEmail(String email) {
 		String sql_query;
 		if(email == null)

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
@@ -12,16 +11,35 @@
 
 	<context:component-scan base-package="com.mycompany.myapp" />
 
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSource" />
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/calendar?characterEncoding=UTF-8" />
+		<property name="url"
+			value="jdbc:mysql://localhost/calendar?characterEncoding=UTF-8" />
 		<property name="username" value="spring" />
 		<property name="password" value="book" />
+	</bean>
+
+	<bean id="calendarUserDao" class="com.mycompany.myapp.dao.JdbcCalendarUserDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="eventAttendeeDao" class="com.mycompany.myapp.dao.JdbcEventAttendeeDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="eventDao" class="com.mycompany.myapp.dao.JdbcEventDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="calendarService" class="com.mycompany.myapp.service.DefaultCalendarService">
 	</bean>
 </beans>

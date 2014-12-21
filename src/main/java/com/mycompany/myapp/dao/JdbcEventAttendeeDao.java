@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.myapp.domain.Event;
 import com.mycompany.myapp.domain.EventAttendee;
 
 @Repository("eventAttendeeDao")
@@ -50,6 +51,12 @@ public class JdbcEventAttendeeDao implements EventAttendeeDao {
 	@Autowired
 	public void setDataSource(DataSource dataSource){
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+
+	@Override
+	public List<EventAttendee> findAllEventAttendee(){
+		String sql_query = "select * from events_attendees";
+		return this.jdbcTemplate.query(sql_query, rowMapper);
 	}
 
 	@Override

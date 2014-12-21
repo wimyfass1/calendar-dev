@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <c:set var="pageTitle" value="Welcome to myCalendar!" scope="request" />
 <html>
@@ -19,12 +20,9 @@
 </head>
 <body class="header">
 	<div class="container">
-		<jsp:include page="./includes/header.jsp" />
-			<div class="alert alert-danger" id="message">
-				<c:out value="${message}" />
-			</div>
+		<jsp:include page="../includes/header.jsp" />
+ 
 	
-		<jsp:include page="./includes/footer.jsp" />
-	</div>
+	<META http-equiv=refresh content="0;url=../"> 
 </body>
 </html>
